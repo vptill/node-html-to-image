@@ -49,6 +49,7 @@ export async function makeScreenshot(
     omitBackground: screenshot.transparent,
     encoding: screenshot.encoding,
     quality: screenshot.quality,
+    clip: screenshot.clip
   });
 
   screenshot.setBuffer(buffer);
