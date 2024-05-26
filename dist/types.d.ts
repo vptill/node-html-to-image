@@ -1,0 +1,35 @@
+import type { Page, PuppeteerLifeCycleEvent, PuppeteerNodeLaunchOptions, ScreenshotClip } from "puppeteer";
+import type { Screenshot } from "./models/Screenshot";
+export type Content = Array<{
+    output: string;
+    selector?: string;
+}> | object;
+export type Encoding = "base64" | "binary";
+export type ImageType = "png" | "jpeg";
+export interface ScreenshotParams {
+    html: string;
+    encoding?: Encoding;
+    transparent?: boolean;
+    type?: ImageType;
+    quality?: number;
+    selector?: string;
+    content?: Content;
+    output?: string;
+    clip?: ScreenshotClip;
+}
+export interface Options extends ScreenshotParams {
+    puppeteerArgs?: PuppeteerNodeLaunchOptions;
+    puppeteer?: any;
+    waitUntil?: PuppeteerLifeCycleEvent | PuppeteerLifeCycleEvent[];
+    beforeScreenshot?: (page: Page) => void;
+    timeout?: number;
+}
+export interface MakeScreenshotParams {
+    screenshot: Screenshot;
+    waitUntil?: PuppeteerLifeCycleEvent | PuppeteerLifeCycleEvent[];
+    beforeScreenshot?: (page: Page) => void;
+    handlebarsHelpers?: {
+        [helpers: string]: (...args: any[]) => any;
+    };
+    timeout?: number;
+}

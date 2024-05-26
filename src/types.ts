@@ -1,4 +1,4 @@
-import type { Page, PuppeteerLifeCycleEvent, PuppeteerNodeLaunchOptions } from "puppeteer";
+import type { Page, PuppeteerLifeCycleEvent, PuppeteerNodeLaunchOptions, ScreenshotClip } from "puppeteer";
 import type { Screenshot } from "./models/Screenshot";
 
 export type Content = Array<{ output: string; selector?: string }> | object;
@@ -14,6 +14,7 @@ export interface ScreenshotParams {
   selector?: string;
   content?: Content;
   output?: string;
+  clip?: ScreenshotClip;
 }
 
 export interface Options extends ScreenshotParams {

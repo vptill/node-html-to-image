@@ -1,3 +1,4 @@
+import { ScreenshotClip } from "puppeteer";
 import { ImageType, Encoding, Content, ScreenshotParams } from "../types";
 
 export class Screenshot {
@@ -10,7 +11,7 @@ export class Screenshot {
   type?: ImageType;
   encoding?: Encoding;
   transparent?: boolean;
-  clip?: Object;
+  clip?: ScreenshotClip;
 
   constructor(params: ScreenshotParams) {
     if (!params || !params.html) {
@@ -26,7 +27,7 @@ export class Screenshot {
       selector = "body",
       quality = 80,
       type = "png",
-      clip = {}
+      clip = {y: 0, x:0, width:0, height:0}
     } = params;
 
     this.html = html;
