@@ -14,6 +14,7 @@ export async function nodeHtmlToImage(options: Options) {
     selector,
     type,
     quality,
+    clip,
     puppeteerArgs = {},
     timeout = 30000,
     puppeteer = undefined,
@@ -44,6 +45,7 @@ export async function nodeHtmlToImage(options: Options) {
             selector: contentSelector ? contentSelector : selector,
             type,
             quality,
+            clip
           },
           async ({ page, data }) => {
             const screenshot = await makeScreenshot(page, {
