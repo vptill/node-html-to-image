@@ -10,6 +10,7 @@ export class Screenshot {
   type?: ImageType;
   encoding?: Encoding;
   transparent?: boolean;
+  clip?: Object;
 
   constructor(params: ScreenshotParams) {
     if (!params || !params.html) {
@@ -25,6 +26,7 @@ export class Screenshot {
       selector = "body",
       quality = 80,
       type = "png",
+      clip = {}
     } = params;
 
     this.html = html;
@@ -35,6 +37,7 @@ export class Screenshot {
     this.content = isEmpty(content) ? undefined : content;
     this.selector = selector;
     this.quality = type === "jpeg" ? quality : undefined;
+    this.clip = clip;
   }
 
   setHTML(html: string) {
